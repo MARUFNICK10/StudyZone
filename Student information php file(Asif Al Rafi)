@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Information</title>
+</head>
+<body>
+
+	<h1>Student Information</h1>
+	<hr>
+
+	<form action="" method="post" name="">
+		
+
+			     <h3>ID: 
+				 <input type="text" name="id" placeholder="Enter your ID"></h3>
+
+				<h3>Name: 
+				<input type="text" name="name" placeholder="Enter your name"></h3>
+			
+			
+				<h3>Address:
+				<input type="text" name="address" placeholder="Enter your address"></h3>
+
+				<h3>Phone:
+				<input type="text" name="phone" placeholder="Enter your phone number"></h3>
+
+				<h3>Parent's Name:
+				<input type="text" name="pname" placeholder="Enter your Parent's Name"></h3>
+			
+				
+					<input type="submit" name="Submit" value="Submit">
+
+
+		
+	</form>
+
+
+<?php
+//including the database connection file
+include_once("config.php");
+
+if(isset($_POST['Submit'])) {	
+	
+	
+	$id = $_POST['id'];
+	$name = $_POST['name'];
+	$address = $_POST['address'];
+$phone = $_POST['phone'];
+$pname = $_POST['pname'];
+	
+				
+	$sql = "INSERT  INTO student(sid, sname, saddress,phone,pname) 
+								VALUES('$id','$name', '$address','$phone','$pname')";
+	
+	$result = mysqli_query($conn, $sql);
+
+	//header("Location: index.php");
+	echo "<h1 align = 'center'>Information Added</h1>";
+		
+	}
+
+
+?>
+
+
+
+
+<p align="center"><a href="view.php">VIEW</a></p>
+
+
+</body>
+</html>
+
