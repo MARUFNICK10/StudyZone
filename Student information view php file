@@ -1,0 +1,79 @@
+<?php
+
+include_once("config.php");
+
+//fetching data in descending order (lastest entry first)
+
+$sql = "SELECT sid,sname,saddress,phone,pname 
+FROM student
+		";
+$result = mysqli_query($conn, $sql);
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Student Information</title>
+	<style>
+h1{
+	color:white;
+}
+table
+{
+color:white;
+border-radius:20px;
+}
+
+#button
+{
+background-color:green;
+color:white;
+height:32px;
+width:85px;
+border-radius:25px;
+}
+
+body
+{
+background:black;
+}
+</style>
+</head>
+<body>
+
+	<h1 align="center">Student Information</h1>
+	<hr>
+
+	<table border="0" bgcolor="grey" align="center" cellspacing="20">
+
+       <tr>
+    <th>ID</th>
+    <th >Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Parent's Name</th>
+
+  </tr>
+
+	<?php 
+	while($res = mysqli_fetch_array($result)) { 
+	?>
+		<tr>
+		<td><?php echo $res['sid'];?></td>		
+		<td><?php echo $res['sname']; ?></td>	
+        <td><?php echo $res['saddress'];?></td>
+        <td><?php echo $res['phone'];?></td>
+        <td><?php echo $res['pname'];?></td>
+		</tr>
+
+	<?php	
+		}
+		?>
+
+	</table>
+
+
+
+</body>
+</html>
