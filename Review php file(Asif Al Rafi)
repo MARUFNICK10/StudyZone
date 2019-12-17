@@ -1,0 +1,93 @@
+<html>
+<head>
+<title> Review</title>
+
+<style>
+	h1{
+		color:white;
+	}
+table
+{
+color:white;
+border-radius:20px;
+}
+
+#button
+{
+background-color:green;
+color:white;
+height:32px;
+width:85px;
+border-radius:25px;
+}
+
+body
+{
+background:linear-gradient(red,blue);
+}
+</style>
+
+</head>
+<h1 align="center">Please Enter your Review</h1>
+
+<body>
+<br><br><br><br><br>
+
+<form action="" method="post" name="">
+<table border="0" bgcolor="black" align="center" cellspacing="20">
+<tr>
+<td>Name</td>
+<td><input type="text" name="name" placeholder="Enter Your Name" required></td>
+</tr>
+
+
+<tr>
+<td>Email</td>
+<td><input type="text" name="email" placeholder="Enter Your Email Address" required></td>
+</tr>
+
+<tr>
+<td>Comment</td>
+<td><input type="text" name="comment" placeholder="Enter your comment" required></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input type="submit" id="button"name="Submit" value="Submit"></td>
+</tr>
+</form>
+</table>
+
+<?php
+//including the database connection file
+include_once("config.php");
+
+if(isset($_POST['Submit'])) {	
+	
+	
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$comment = $_POST['comment'];
+	
+
+	
+				
+	$sql = "INSERT  INTO review(name, email, comment) 
+								VALUES('$name', '$email', '$comment')";
+	
+	$result = mysqli_query($conn, $sql);
+
+	//header("Location: index.php");
+	echo "<h1 align = 'center'>Thanks for your review</h1>";
+		
+	}
+
+
+?>
+
+
+
+
+<p align="center"><a href="rview.php">VIEW</a></p>
+
+
+</body>
+</html>
