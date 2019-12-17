@@ -1,0 +1,75 @@
+<?php
+
+include_once("config.php");
+
+//fetching data in descending order (lastest entry first)
+
+$sql = "SELECT * FROM teacher";
+$result = mysqli_query($conn, $sql);
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Teacher Information</title>
+	<style>
+h1{
+	color:white;
+}
+table
+{
+color:white;
+border-radius:20px;
+}
+
+#button
+{
+background-color:green;
+color:white;
+height:32px;
+width:85px;
+border-radius:25px;
+}
+
+body
+{
+background:black;
+}
+</style>
+</head>
+<body>
+
+	<h1 align="center">Teachers of Study Zone</h1>
+	<br>  <br>
+
+	<table border="0" bgcolor="grey" align="center" cellspacing="20">
+
+       <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>CONTACT</th>
+    <th>PERCENTAGE</th>
+
+  </tr>
+
+	<?php 
+	while($res = mysqli_fetch_array($result)) { 
+	?>
+		<tr>	
+		<td align="center"><?php echo $res['tid']; ?></td>
+		<td align="center"><?php echo $res['tname'];?></td>
+		<td align="center"><?php echo $res['tcontact'];?></td>		
+        <td align="center"><?php echo $res['percentage'];?></td>
+		</tr>
+
+	<?php	
+		}
+		?>
+
+	</table>
+
+
+
+</body>
+</html>
