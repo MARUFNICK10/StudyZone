@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Enter New Teacher</title>
+</head>
+<body>
+
+	<h1>New Teacher Entry Form</h1>
+	<hr>
+
+	<form action="" method="post" name="">
+		
+
+			
+				<h3>ID: 
+				<input type="text" name="ID" placeholder="Enter your ID"></h3>
+			
+				<h3>Name: 
+				 <input type="text" name="Name" placeholder="Enter your Name"></h3>
+
+			
+				<h3>Contact:
+				<input type="text" name="Contact" placeholder="Enter your Contact no."></h3>
+
+				<h3>Percentage:
+				<input type="text" name="Percentage" placeholder="Enter your percentage"></h3>
+			
+				
+					<input type="submit" name="Submit" value="Submit">
+
+
+		
+	</form>
+
+
+<?php
+//including the database connection file
+include_once("config.php");
+
+if(isset($_POST['Submit'])) {	
+	
+	
+	$id = $_POST['ID'];
+	$name = $_POST['Name'];
+	$contact = $_POST['Contact'];
+	$percentage = $_POST['Percentage'];
+
+	
+				
+	$sql = "INSERT  INTO teacher(tid, tname, tcontact, percentage) 
+								VALUES('$id', '$name', '$contact', '$percentage')";
+	
+	$result = mysqli_query($conn, $sql);
+
+	//header("Location: index.php");
+	echo "<h1 align = 'center'>Information Added</h1>";
+		
+	}
+
+
+?>
+
+
+
+
+<p align="center"><a href="tview.php">VIEW</a></p>
+
+
+</body>
+</html>
+
